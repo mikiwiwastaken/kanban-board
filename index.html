@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <span class="eyebrow">WORKSPACE / PROJECT</span>
+          <h1>My Tasks</h1>
+          <p class="subtitle">Manage your work and stay productive.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="user-avatar" aria-label="User profile">M</button>
+        </div>
+      </header>
+
+      <section class="board">
+        <!-- TO DO -->
+        <section class="column" data-status="todo">
+          <div class="column-header">
+            <div class="column-title">
+              <span class="status-dot todo-dot"></span>
+              <h2>To Do</h2>
+              <span class="task-count">3</span>
+            </div>
+
+            <button class="icon-btn" aria-label="More options">
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+
+          <div class="task-list">
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-design">Design</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Design new dashboard UI</h3>
+              <p>
+                Create a clean and modern dashboard layout for the application.
+              </p>
+
+              <div class="task-footer">
+                <span class="priority priority-high">
+                  <i class="fa-solid fa-flag"></i>
+                  High
+                </span>
+
+                <span class="due-date">
+                  <i class="fa-regular fa-calendar"></i>
+                  Nov 15
+                </span>
+              </div>
+            </article>
+
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-development">Development</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Setup project structure</h3>
+              <p>
+                Initialize folders, configuration and development environment.
+              </p>
+
+              <div class="task-footer">
+                <span class="priority priority-medium">
+                  <i class="fa-solid fa-flag"></i>
+                  Medium
+                </span>
+
+                <span class="due-date">
+                  <i class="fa-regular fa-calendar"></i>
+                  Nov 17
+                </span>
+              </div>
+            </article>
+
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-research">Research</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Analyze competitors</h3>
+              <p>Research similar products and identify useful features.</p>
+
+              <div class="task-footer">
+                <span class="priority priority-low">
+                  <i class="fa-solid fa-flag"></i>
+                  Low
+                </span>
+
+                <span class="due-date">
+                  <i class="fa-regular fa-calendar"></i>
+                  Nov 20
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <button class="add-task-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add a task
+          </button>
+        </section>
+
+        <!-- DOING -->
+        <section class="column" data-status="doing">
+          <div class="column-header">
+            <div class="column-title">
+              <span class="status-dot doing-dot"></span>
+              <h2>Doing</h2>
+              <span class="task-count">2</span>
+            </div>
+
+            <button class="icon-btn" aria-label="More options">
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+
+          <div class="task-list">
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-development">Development</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Implement authentication</h3>
+              <p>Build login, registration and password recovery flows.</p>
+
+              <div class="task-footer">
+                <span class="priority priority-high">
+                  <i class="fa-solid fa-flag"></i>
+                  High
+                </span>
+
+                <span class="due-date">
+                  <i class="fa-regular fa-calendar"></i>
+                  Nov 14
+                </span>
+              </div>
+            </article>
+
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-design">Design</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Create landing page</h3>
+              <p>Design and build the first version of the landing page.</p>
+
+              <div class="task-footer">
+                <span class="priority priority-medium">
+                  <i class="fa-solid fa-flag"></i>
+                  Medium
+                </span>
+
+                <span class="due-date">
+                  <i class="fa-regular fa-calendar"></i>
+                  Nov 16
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <button class="add-task-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add a task
+          </button>
+        </section>
+
+        <!-- DONE -->
+        <section class="column" data-status="done">
+          <div class="column-header">
+            <div class="column-title">
+              <span class="status-dot done-dot"></span>
+              <h2>Done</h2>
+              <span class="task-count">2</span>
+            </div>
+
+            <button class="icon-btn" aria-label="More options">
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+
+          <div class="task-list">
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-research">Research</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Define project requirements</h3>
+              <p>Gather requirements and document project objectives.</p>
+
+              <div class="task-footer">
+                <span class="priority priority-low">
+                  <i class="fa-solid fa-flag"></i>
+                  Low
+                </span>
+
+                <span class="due-date completed">
+                  <i class="fa-solid fa-circle-check"></i>
+                  Completed
+                </span>
+              </div>
+            </article>
+
+            <article class="task-card">
+              <div class="task-top">
+                <span class="tag tag-development">Development</span>
+                <button class="more-btn" aria-label="More">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+              <h3>Setup Git repository</h3>
+              <p>Initialize Git and configure the remote repository.</p>
+
+              <div class="task-footer">
+                <span class="priority priority-medium">
+                  <i class="fa-solid fa-flag"></i>
+                  Medium
+                </span>
+
+                <span class="due-date completed">
+                  <i class="fa-solid fa-circle-check"></i>
+                  Completed
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <button class="add-task-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add a task
+          </button>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
