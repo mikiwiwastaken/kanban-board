@@ -236,11 +236,19 @@ button {
   margin-bottom: 13px;
 }
 
+/* tag */
 .tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+
   font-size: 10px;
   font-weight: 650;
   padding: 5px 9px;
   border-radius: 5px;
+
+  white-space: nowrap;
+  line-height: 1.3;
 }
 
 .tag-design {
@@ -256,6 +264,141 @@ button {
 .tag-research {
   color: #c58a36;
   background: rgba(197, 138, 54, 0.12);
+}
+
+.tag-marketing {
+  color: #e16a91;
+  background: rgba(225, 106, 145, 0.12);
+}
+
+.tag-bug {
+  color: #e05252;
+  background: rgba(224, 82, 82, 0.12);
+}
+
+.tag-feature {
+  color: #2d9d83;
+  background: rgba(45, 157, 131, 0.12);
+}
+
+.tag-documentation {
+  color: #6482c9;
+  background: rgba(100, 130, 201, 0.12);
+}
+
+.tag-testing {
+  color: #b17acb;
+  background: rgba(177, 122, 203, 0.12);
+}
+
+.tag-meeting {
+  color: #b28a36;
+  background: rgba(178, 138, 54, 0.12);
+}
+
+.tag-planning {
+  color: #7185a6;
+  background: rgba(113, 133, 166, 0.12);
+}
+
+.tag-backend {
+  color: #4779b9;
+  background: rgba(71, 121, 185, 0.12);
+}
+
+.tag-frontend {
+  color: #1d9c9c;
+  background: rgba(29, 156, 156, 0.12);
+}
+
+.tag-uiux {
+  color: #aa70c9;
+  background: rgba(170, 112, 201, 0.12);
+}
+
+.tag-database {
+  color: #4d91a8;
+  background: rgba(77, 145, 168, 0.12);
+}
+
+.tag-devops {
+  color: #6d8e6d;
+  background: rgba(109, 142, 109, 0.12);
+}
+
+.tag-security {
+  color: #d16a4c;
+  background: rgba(209, 106, 76, 0.12);
+}
+
+.tag-performance {
+  color: #bd873c;
+  background: rgba(189, 135, 60, 0.12);
+}
+
+.tag-refactoring {
+  color: #8181ca;
+  background: rgba(129, 129, 202, 0.12);
+}
+
+.tag-deployment {
+  color: #3c9b76;
+  background: rgba(60, 155, 118, 0.12);
+}
+
+.tag-support {
+  color: #548cbb;
+  background: rgba(84, 140, 187, 0.12);
+}
+
+.tag-content {
+  color: #cb7890;
+  background: rgba(203, 120, 144, 0.12);
+}
+
+.tag-finance {
+  color: #349875;
+  background: rgba(52, 152, 117, 0.12);
+}
+
+.tag-product {
+  color: #8271cc;
+  background: rgba(130, 113, 204, 0.12);
+}
+
+.tag-legal {
+  color: #9a845d;
+  background: rgba(154, 132, 93, 0.12);
+}
+
+.tag-hr {
+  color: #bd719d;
+  background: rgba(189, 113, 157, 0.12);
+}
+
+.tag-operations {
+  color: #6b8e9e;
+  background: rgba(107, 142, 158, 0.12);
+}
+
+.tag-general {
+  color: #858b9b;
+  background: rgba(133, 139, 155, 0.12);
+}
+
+.tag-urgent {
+  color: #dc4545;
+  background: rgba(220, 69, 69, 0.14);
+}
+
+.tag-blocked {
+  color: #d17b36;
+  background: rgba(209, 123, 54, 0.14);
+}
+
+.tag-archived {
+  color: #858b9b;
+  background: rgba(133, 139, 155, 0.12);
 }
 
 .task-card h3 {
