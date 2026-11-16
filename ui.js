@@ -114,8 +114,8 @@ export function renderModal(heading, card, column) {
   const closeBtn = document.createElement("button");
   closeBtn.type = "button";
   closeBtn.className = "modal-close";
-  modal.ariaLabel = "Close modal";
-  modal.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+  closeBtn.ariaLabel = "Close modal";
+  closeBtn.innerHTML = "<i class='fa-solid fa-xmark'></i>";
 
   modalHeader.append(modalHeading, closeBtn);
 
