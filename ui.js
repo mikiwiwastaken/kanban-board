@@ -134,6 +134,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   titleLabel.textContent = "Title";
   titleInput.type = "text";
   titleInput.id = "task-title";
+  titleInput.name = "title";
   titleInput.className = "form-control";
   titleInput.placeholder = "Enter task title";
   titleInput.required = true;
@@ -149,6 +150,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   descriptionLabel.innerHTML =
     "Description <span class='optional'>(Optional)</span>";
   descriptionInput.id = "task-description";
+  descriptionInput.name = "description";
   descriptionInput.className = "form-control";
   descriptionInput.placeholder = "Add a description...";
   descriptionInput.rows = 4;
@@ -166,6 +168,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   categoryLabel.setAttribute("for", "task-category");
   categoryLabel.textContent = "Category";
   categorySelect.id = "task-category";
+  categorySelect.name = "category";
   categorySelect.className = "form-control";
   categorySelect.innerHTML = `
     <option value="design">Design</option>
@@ -191,6 +194,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   priorityLabel.setAttribute("for", "task-priority");
   priorityLabel.textContent = "Priority";
   prioritySelect.id = "task-priority";
+  prioritySelect.name = "priority";
   prioritySelect.className = "form-control";
   prioritySelect.innerHTML = `
     <option value="low">Low</option>
@@ -214,6 +218,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   dueDateLabel.innerHTML = "Due date<span class='optional'>(Optional)</span>";
   dueDateInput.type = "date";
   dueDateInput.id = "task-due-date";
+  dueDateInput.name = "dueDate";
   dueDateInput.className = "form-control";
   dueDateInput.value = card.dueDate ?? "";
   dueDate.append(dueDateLabel, dueDateInput);
@@ -225,6 +230,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   statusLabel.setAttribute("for", "task-status");
   statusLabel.textContent = "Status";
   statusSelect.id = "task-status";
+  statusSelect.name = "status";
   statusSelect.className = "form-control";
   statusSelect.innerHTML = `
     <option value="todo">To Do</option>
