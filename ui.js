@@ -82,11 +82,7 @@ function renderColumn(column) {
   taskList.className = "task-list";
   taskList.append(...column.cards.map(renderCard));
 
-  const addTaskBtn = document.createElement("button");
-  addTaskBtn.className = "add-task-btn";
-  addTaskBtn.innerHTML = "<i class='fa-solid fa-plus'></i>Add a task";
-
-  el.append(columnHeader, taskList, addTaskBtn);
+  el.append(columnHeader, taskList);
   return el;
 }
 
