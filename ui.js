@@ -95,3 +95,162 @@ function renderColumn(column) {
 export function render(board, container) {
   container.replaceChildren(...[...board.columns.values()].map(renderColumn));
 }
+
+// Render the task editor modal.
+export function renderModal(heading, card, column) {
+  const modalOverlay = document.createElement("div");
+  modalOverlay.className = "modal-overlay";
+
+  const modal = document.createElement("div");
+  modal.className = "modal";
+
+  // modal header
+  const modalHeader = document.createElement("div");
+  modalHeader.className = "modal-header";
+
+  const modalHeading = document.createElement("h2");
+  modalHeading.textContent = heading;
+
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "modal-close";
+  modal.ariaLabel = "Close modal";
+  modal.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+
+  modalHeader.append(modalHeading, closeBtn);
+
+  // modal form
+  const modalForm = document.createElement("form");
+  modalForm.className = "modal-form";
+
+  // title
+  const title = document.createElement("div");
+  const titleLabel = document.createElement("label");
+  const titleInput = document.createElement("input");
+  title.className = "form-group";
+  titleLabel.setAttribute("for", "task-title");
+  titleLabel.textContent = "Title";
+  titleInput.type = "text";
+  titleInput.id = "task-title";
+  titleInput.className = "form-control";
+  titleInput.placeholder = "Enter task title";
+  titleInput.required = true;
+  titleInput.value = card.title ?? "";
+  title.append(titleLabel, titleInput);
+
+  // description
+  const description = document.createElement("div");
+  const descriptionLabel = document.createElement("label");
+  const descriptionInput = document.createElement("textarea");
+  description.className = "form-group";
+  descriptionLabel.setAttribute("for", "task-description");
+  descriptionLabel.innerHTML =
+    "Description <span class='optional'>(Optional)</span>";
+  descriptionInput.id = "task-description";
+  descriptionInput.className = "form-control";
+  descriptionInput.placeholder = "Add a description...";
+  descriptionInput.rows = 4;
+  descriptionInput.value = card.description ?? "";
+  description.append(descriptionLabel, descriptionInput);
+
+  // category and priority
+  const row1 = document.createElement("div");
+  row1.className = "form-row";
+
+  const category = document.createElement("div");
+  const categoryLabel = document.createElement("label");
+  const categorySelect = document.createElement("select");
+  category.className = "form-group";
+  categoryLabel.setAttribute("for", "task-category");
+  categoryLabel.textContent = "Category";
+  categorySelect.id = "task-category";
+  categorySelect.className = "form-control";
+  categorySelect.innerHTML = `
+    <option value="design">Design</option>
+    <option value="development">Development</option>
+    <option value="research">Research</option>
+    <option value="bug">Bug</option>
+    <option value="feature">Feature</option>
+    <option value="testing">Testing</option>
+    <option value="documentation">Documentation</option>
+    <option value="marketing">Marketing</option>
+    <option value="meeting">Meeting</option>
+    <option value="planning">Planning</option>
+    <option value="support">Support</option>
+    <option value="other">Other</option>
+  `;
+  categorySelect.value = card.category ?? "design";
+  category.append(categoryLabel, categorySelect);
+
+  const priority = document.createElement("div");
+  const priorityLabel = document.createElement("label");
+  const prioritySelect = document.createElement("select");
+  priority.className = "form-group";
+  priorityLabel.setAttribute("for", "task-priority");
+  priorityLabel.textContent = "Priority";
+  prioritySelect.id = "task-priority";
+  prioritySelect.className = "form-control";
+  prioritySelect.innerHTML = `
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  `;
+  priority.append(priorityLabel, prioritySelect);
+
+  row1.append(category, priority);
+
+  // due date and status
+  const row2 = document.createElement("div");
+  row2.className = "form-row";
+
+  const dueDate = document.createElement("div");
+  const dueDateLabel = document.createElement("label");
+  const dueDateInput = document.createElement("input");
+  dueDate.className = "form-group";
+  dueDateLabel.setAttribute("for", "task-due-date");
+  dueDateLabel.innerHTML = "Due date<span class='optional'>(Optional)</span>";
+  dueDateInput.type = "date";
+  dueDateInput.id = "task-due-date";
+  dueDateInput.className = "form-control";
+  dueDateInput.value = card.dueDate ?? "";
+  dueDate.append(dueDateLabel, dueDateInput);
+
+  const status = document.createElement("div");
+  const statusLabel = document.createElement("label");
+  const statusSelect = document.createElement("select");
+  status.className = "form-group";
+  statusLabel.setAttribute("for", "task-status");
+  statusLabel.textContent = "Status";
+  statusSelect.id = "task-status";
+  statusSelect.className = "form-control";
+  statusSelect.innerHTML = `
+    <option value="todo">To Do</option>
+    <option value="doing">Doing</option>
+    <option value="done">Done</option>
+  `;
+  statusSelect.value = column.id;
+  status.append(statusLabel, statusSelect);
+
+  row2.append(dueDate, status);
+
+  // modal footer
+  const modalFooter = document.createElement("div");
+  modalFooter.className = "modal-footer";
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.type = "button";
+  cancelBtn.className = "modal-btn modal-btn-cancel";
+  cancelBtn.textContent = "Cancel";
+
+  const saveBtn = document.createElement("button");
+  saveBtn.type = "submit";
+  saveBtn.className = "modal-btn modal-btn-save";
+  saveBtn.textContent = "Save";
+
+  modalFooter.append(cancelBtn, saveBtn);
+  modalForm.append(title, description, row1, row2, modalFooter);
+  modal.append(modalHeader, modalForm);
+  modalOverlay.append(modal);
+
+  document.querySelector(".app").after(modalOverlay);
+}
