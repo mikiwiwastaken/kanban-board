@@ -254,3 +254,7 @@ export function renderModal(heading, card, column) {
 
   document.querySelector(".app").after(modalOverlay);
 }
+
+export function removeModal() {
+  document.querySelector(".modal-overlay").remove();
+}
