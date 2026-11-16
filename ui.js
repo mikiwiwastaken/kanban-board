@@ -216,7 +216,7 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   const dueDateInput = document.createElement("input");
   dueDate.className = "form-group";
   dueDateLabel.setAttribute("for", "task-due-date");
-  dueDateLabel.innerHTML = "Due date<span class='optional'>(Optional)</span>";
+  dueDateLabel.innerHTML = "Due date <span class='optional'>(Optional)</span>";
   dueDateInput.type = "date";
   dueDateInput.id = "task-due-date";
   dueDateInput.name = "dueDate";
