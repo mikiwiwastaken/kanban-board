@@ -1,4 +1,5 @@
 function renderCard(card) {
+  // task top
   const el = document.createElement("article");
   el.className = "task-card";
   el.dataset.cardId = card.id;
@@ -18,12 +19,14 @@ function renderCard(card) {
 
   taskTop.append(category, moreBtn);
 
+  // title & description
   const title = document.createElement("h3");
   title.textContent = card.title;
 
   const description = document.createElement("p");
   description.textContent = card.description;
 
+  // task footer
   const taskFooter = document.createElement("div");
   taskFooter.className = "task-footer";
 
@@ -53,6 +56,7 @@ function renderColumn(column) {
   el.className = "column";
   el.dataset.columnId = column.id;
 
+  // column header
   const columnHeader = document.createElement("div");
   columnHeader.className = "column-header";
 
@@ -78,6 +82,7 @@ function renderColumn(column) {
 
   columnHeader.append(columnTitle, iconBtn);
 
+  // task list
   const taskList = document.createElement("div");
   taskList.className = "task-list";
   taskList.append(...column.cards.map(renderCard));
