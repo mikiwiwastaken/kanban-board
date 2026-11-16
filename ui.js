@@ -14,7 +14,7 @@ function renderCard(card) {
 
   const moreBtn = document.createElement("button");
   moreBtn.className = "more-btn";
-  moreBtn.setAttribute("aria-label", "More");
+  moreBtn.ariaLabel = "More";
   moreBtn.innerHTML = "<i class='fa-solid fa-ellipsis'></i>";
 
   taskTop.append(category, moreBtn);
