@@ -97,7 +97,9 @@ export function render(board, container) {
 }
 
 // Render the task editor modal.
-export function renderModal(heading, card, column) {
+export function renderModal(heading, card = {}, columnId = "todo") {
+  document.querySelector(".modal-overlay")?.remove();
+
   const modalOverlay = document.createElement("div");
   modalOverlay.className = "modal-overlay";
 
@@ -195,6 +197,7 @@ export function renderModal(heading, card, column) {
     <option value="medium">Medium</option>
     <option value="high">High</option>
   `;
+  prioritySelect.value = card.priority ?? "medium";
   priority.append(priorityLabel, prioritySelect);
 
   row1.append(category, priority);
@@ -228,7 +231,7 @@ export function renderModal(heading, card, column) {
     <option value="doing">Doing</option>
     <option value="done">Done</option>
   `;
-  statusSelect.value = column.id;
+  statusSelect.value = columnId;
   status.append(statusLabel, statusSelect);
 
   row2.append(dueDate, status);
@@ -252,9 +255,10 @@ export function renderModal(heading, card, column) {
   modal.append(modalHeader, modalForm);
   modalOverlay.append(modal);
 
-  document.querySelector(".app").after(modalOverlay);
+  document.body.append(modalOverlay);
+  return modalOverlay;
 }
 
 export function removeModal() {
-  document.querySelector(".modal-overlay").remove();
+  document.querySelector(".modal-overlay")?.remove();
 }
