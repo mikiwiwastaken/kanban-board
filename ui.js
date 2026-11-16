@@ -1,4 +1,4 @@
-function renderCard(card) {
+function renderCard(card, isCompleted) {
   // task top
   const el = document.createElement("article");
   el.className = "task-card";
@@ -9,7 +9,7 @@ function renderCard(card) {
   taskTop.className = "task-top";
 
   const category = document.createElement("span");
-  category.className = `tag tag-${card.category.toLowerCase().replace(/[^a-z]/g, "")}`;
+  category.className = `tag tag-${card.category}`;
   category.textContent = card.category;
 
   const moreBtn = document.createElement("button");
@@ -33,17 +33,16 @@ function renderCard(card) {
   const priorityIcon = document.createElement("i");
   priorityIcon.className = "fa-solid fa-flag";
   const priority = document.createElement("span");
-  priority.className = `priority priority-${card.priority.toLowerCase()}`;
+  priority.className = `priority priority-${card.priority}`;
   priority.append(priorityIcon, card.priority);
 
-  const isCompleted = card.dueDate === "Completed";
   const dueIcon = document.createElement("i");
   dueIcon.className = isCompleted
     ? "fa-solid fa-circle-check"
     : "fa-regular fa-calendar";
   const dueDate = document.createElement("span");
   dueDate.className = isCompleted ? "due-date completed" : "due-date";
-  dueDate.append(dueIcon, card.dueDate);
+  dueDate.append(dueIcon, isCompleted ? "Completed" : card.dueDate);
 
   taskFooter.append(priority, dueDate);
 
@@ -85,7 +84,9 @@ function renderColumn(column) {
   // task list
   const taskList = document.createElement("div");
   taskList.className = "task-list";
-  taskList.append(...column.cards.map(renderCard));
+  taskList.append(
+    ...column.cards.map((card) => renderCard(card, column.id === "done")),
+  );
 
   el.append(columnHeader, taskList);
   return el;

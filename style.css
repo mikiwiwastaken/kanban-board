@@ -373,6 +373,11 @@ button {
   color: #38b98a;
 }
 
+.tag,
+.priority {
+  text-transform: capitalize;
+}
+
 .due-date {
   display: flex;
   align-items: center;
