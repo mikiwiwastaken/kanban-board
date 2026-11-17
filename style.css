@@ -628,6 +628,12 @@ textarea.form-control {
   opacity: 0.88;
 }
 
+/* disable scroll */
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 /* responsive */
 @media (max-width: 900px) {
   .app {
