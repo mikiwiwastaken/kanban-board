@@ -390,6 +390,14 @@ button {
   font-size: 11px;
 }
 
+.due-date.soon {
+  color: #f59e0b;
+}
+
+.due-date.overdue {
+  color: #ef4444;
+}
+
 .due-date.completed {
   color: #38b98a;
 }

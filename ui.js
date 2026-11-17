@@ -1,3 +1,5 @@
+import { getRemainingDays, formatDate } from "./utils.js";
+
 function renderCard(card, isCompleted) {
   // task top
   const el = document.createElement("article");
@@ -41,8 +43,19 @@ function renderCard(card, isCompleted) {
     ? "fa-solid fa-circle-check"
     : "fa-regular fa-calendar";
   const dueDate = document.createElement("span");
-  dueDate.className = isCompleted ? "due-date completed" : "due-date";
-  dueDate.append(dueIcon, isCompleted ? "Completed" : card.dueDate);
+  if (isCompleted) {
+    dueDate.className = "due-date completed";
+    dueDate.append(dueIcon, "Completed");
+  } else if (card.dueDate) {
+    if (getRemainingDays(card.dueDate) < 0) {
+      dueDate.className = "due-date overdue";
+    } else if (getRemainingDays(card.dueDate) < 3) {
+      dueDate.className = "due-date soon";
+    } else {
+      dueDate.className = "due-date";
+    }
+    dueDate.append(dueIcon, formatDate(card.dueDate));
+  }
 
   taskFooter.append(priority, dueDate);
 
