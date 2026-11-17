@@ -1,4 +1,4 @@
-import { Card, Column, Board } from "./models.js";
+import { Card, Board } from "./models.js";
 import { render, renderModal, removeModal } from "./ui.js";
 
 const board = new Board();
@@ -18,16 +18,14 @@ document.body.addEventListener("click", (event) => {
       event.target.closest(".modal-close") ||
       event.target.closest(".modal-btn-cancel")
     ) {
-      removeModal();
-      enableScroll();
+      closeModal();
     }
   }
 });
 
 document.body.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    removeModal();
-    enableScroll();
+    closeModal();
   }
 });
 
@@ -53,10 +51,14 @@ document.addEventListener("submit", (event) => {
     }
 
     render(board, document.querySelector(".board-columns"));
-
-    removeModal();
+    closeModal();
   }
 });
+
+function closeModal() {
+  removeModal();
+  enableScroll();
+}
 
 function disableScroll() {
   document.documentElement.classList.add("no-scroll");
