@@ -19,7 +19,7 @@ function renderCard(card, isCompleted) {
 
   const moreBtn = document.createElement("button");
   moreBtn.className = "more-btn";
-  moreBtn.ariaLabel = "More";
+  moreBtn.ariaLabel = "Task options";
   moreBtn.innerHTML = "<i class='fa-solid fa-ellipsis'></i>";
 
   taskMenuWrapper.append(moreBtn);
