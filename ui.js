@@ -285,7 +285,6 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   modalOverlay.append(modal);
 
   document.body.append(modalOverlay);
-  return modalOverlay;
 }
 
 export function removeModal() {
