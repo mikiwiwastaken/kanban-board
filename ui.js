@@ -143,6 +143,11 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   const modalForm = document.createElement("form");
   modalForm.className = "modal-form";
 
+  if (card.id) {
+    modalForm.dataset.cardId = card.id;
+    modalForm.dataset.columnId = columnId;
+  }
+
   // title
   const title = document.createElement("div");
   const titleLabel = document.createElement("label");
