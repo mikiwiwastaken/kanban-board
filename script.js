@@ -7,7 +7,7 @@ const doing = board.addColumn("doing", "Doing");
 const done = board.addColumn("done", "Done");
 
 document.querySelector(".add-task-btn").addEventListener("click", () => {
-  renderModal("Add a task");
+  renderModal("Add task");
   disableScroll();
 });
 
