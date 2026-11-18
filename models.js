@@ -9,6 +9,14 @@ export class Card {
     this.priority = priority;
     this.dueDate = dueDate;
   }
+
+  update({ title, description, category, priority, dueDate }) {
+    this.title = title;
+    this.description = description;
+    this.category = category;
+    this.priority = priority;
+    this.dueDate = dueDate;
+  }
 }
 
 class Column {
@@ -55,5 +63,14 @@ export class Board {
     const card = fromColumn.removeCard(cardId);
     if (!card) throw new Error("Card not found");
     toColumn.addCard(card);
+  }
+
+  getCard(columnId, cardId) {
+    const column = this.columns.get(columnId);
+    if (!column) throw new Error(`Column not found: ${columnId}`);
+
+    const card = column.cards.find((c) => c.id === cardId);
+    if (!card) throw new Error(`Card not found: ${cardId}`);
+    return card;
   }
 }
