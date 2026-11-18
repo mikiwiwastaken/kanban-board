@@ -686,9 +686,8 @@ textarea.form-control {
 }
 
 /* disable scroll */
-.no-scroll {
+html.no-scroll {
   overflow: hidden;
-  height: 100%;
 }
 
 /* responsive */
