@@ -28,8 +28,8 @@ document.body.addEventListener("click", (event) => {
     disableScroll();
   }
 
+  const wrapper = event.target.closest(".task-menu-wrapper");
   if (event.target.closest(".more-btn")) {
-    const wrapper = event.target.closest(".task-menu-wrapper");
     if (wrapper.querySelector(".task-menu")) {
       closeTaskMenu();
     } else {
