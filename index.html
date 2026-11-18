@@ -26,7 +26,6 @@
       </header>
 
       <section class="board">
-        <!-- BOARD TOOLBAR -->
         <div class="board-toolbar">
           <button class="add-task-btn">
             <i class="fa-solid fa-plus"></i>
@@ -34,15 +33,13 @@
           </button>
         </div>
 
-        <!-- BOARD COLUMNS -->
         <div class="board-columns">
-          <!-- TO DO -->
           <section class="column" data-column-id="todo">
             <div class="column-header">
               <div class="column-title">
                 <span class="status-dot todo-dot"></span>
                 <h2>To Do</h2>
-                <span class="task-count">3</span>
+                <span class="task-count">0</span>
               </div>
 
               <button class="icon-btn" aria-label="More options">
@@ -50,99 +47,15 @@
               </button>
             </div>
 
-            <div class="task-list">
-              <article class="task-card" data-card-id="1" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-design">design</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Design new dashboard UI</h3>
-                <p>
-                  Create a clean and modern dashboard layout for the
-                  application.
-                </p>
-
-                <div class="task-footer">
-                  <span class="priority priority-high">
-                    <i class="fa-solid fa-flag"></i>
-                    high
-                  </span>
-
-                  <span class="due-date">
-                    <i class="fa-regular fa-calendar"></i>
-                    15 Nov
-                  </span>
-                </div>
-              </article>
-
-              <article class="task-card" data-card-id="2" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-development">development</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Setup project structure</h3>
-                <p>
-                  Initialize folders, configuration and development environment.
-                </p>
-
-                <div class="task-footer">
-                  <span class="priority priority-medium">
-                    <i class="fa-solid fa-flag"></i>
-                    medium
-                  </span>
-
-                  <span class="due-date">
-                    <i class="fa-regular fa-calendar"></i>
-                    17 Nov
-                  </span>
-                </div>
-              </article>
-
-              <article class="task-card" data-card-id="3" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-research">research</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Analyze competitors</h3>
-                <p>Research similar products and identify useful features.</p>
-
-                <div class="task-footer">
-                  <span class="priority priority-low">
-                    <i class="fa-solid fa-flag"></i>
-                    low
-                  </span>
-
-                  <span class="due-date">
-                    <i class="fa-regular fa-calendar"></i>
-                    20 Nov
-                  </span>
-                </div>
-              </article>
-            </div>
+            <div class="task-list"></div>
           </section>
 
-          <!-- DOING -->
           <section class="column" data-column-id="doing">
             <div class="column-header">
               <div class="column-title">
                 <span class="status-dot doing-dot"></span>
                 <h2>Doing</h2>
-                <span class="task-count">2</span>
+                <span class="task-count">0</span>
               </div>
 
               <button class="icon-btn" aria-label="More options">
@@ -150,68 +63,15 @@
               </button>
             </div>
 
-            <div class="task-list">
-              <article class="task-card" data-card-id="4" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-development">development</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Implement authentication</h3>
-                <p>Build login, registration and password recovery flows.</p>
-
-                <div class="task-footer">
-                  <span class="priority priority-high">
-                    <i class="fa-solid fa-flag"></i>
-                    high
-                  </span>
-
-                  <span class="due-date">
-                    <i class="fa-regular fa-calendar"></i>
-                    14 Nov
-                  </span>
-                </div>
-              </article>
-
-              <article class="task-card" data-card-id="5" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-design">design</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Create landing page</h3>
-                <p>Design and build the first version of the landing page.</p>
-
-                <div class="task-footer">
-                  <span class="priority priority-medium">
-                    <i class="fa-solid fa-flag"></i>
-                    medium
-                  </span>
-
-                  <span class="due-date">
-                    <i class="fa-regular fa-calendar"></i>
-                    16 Nov
-                  </span>
-                </div>
-              </article>
-            </div>
+            <div class="task-list"></div>
           </section>
 
-          <!-- DONE -->
           <section class="column" data-column-id="done">
             <div class="column-header">
               <div class="column-title">
                 <span class="status-dot done-dot"></span>
                 <h2>Done</h2>
-                <span class="task-count">2</span>
+                <span class="task-count">0</span>
               </div>
 
               <button class="icon-btn" aria-label="More options">
@@ -219,59 +79,7 @@
               </button>
             </div>
 
-            <div class="task-list">
-              <article class="task-card" data-card-id="6" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-research">research</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Define project requirements</h3>
-                <p>Gather requirements and document project objectives.</p>
-
-                <div class="task-footer">
-                  <span class="priority priority-low">
-                    <i class="fa-solid fa-flag"></i>
-                    low
-                  </span>
-
-                  <span class="due-date completed">
-                    <i class="fa-solid fa-circle-check"></i>
-                    Completed
-                  </span>
-                </div>
-              </article>
-
-              <article class="task-card" data-card-id="7" draggable="true">
-                <div class="task-top">
-                  <span class="tag tag-development">Development</span>
-                  <div class="task-menu-wrapper">
-                    <button class="more-btn" aria-label="Task options">
-                      <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <h3>Setup Git repository</h3>
-                <p>Initialize Git and configure the remote repository.</p>
-
-                <div class="task-footer">
-                  <span class="priority priority-medium">
-                    <i class="fa-solid fa-flag"></i>
-                    Medium
-                  </span>
-
-                  <span class="due-date completed">
-                    <i class="fa-solid fa-circle-check"></i>
-                    Completed
-                  </span>
-                </div>
-              </article>
-            </div>
+            <div class="task-list"></div>
           </section>
         </div>
       </section>
