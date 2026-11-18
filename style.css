@@ -636,6 +636,55 @@ textarea.form-control {
   opacity: 0.88;
 }
 
+/* task popup menu */
+.task-menu-wrapper {
+  position: relative;
+}
+
+.task-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 20;
+
+  width: 150px;
+  padding: 5px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 9px 10px;
+
+  background: transparent;
+  color: var(--text);
+
+  border-radius: 6px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.menu-item:hover {
+  background: var(--surface-hover);
+}
+
+.menu-item i {
+  width: 14px;
+  font-size: 12px;
+}
+
+.remove-item {
+  color: #ef4444;
+}
+
 /* disable scroll */
 .no-scroll {
   overflow: hidden;

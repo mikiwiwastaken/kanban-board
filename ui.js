@@ -14,12 +14,16 @@ function renderCard(card, isCompleted) {
   category.className = `tag tag-${card.category}`;
   category.textContent = card.category;
 
+  const taskMenuWrapper = document.createElement("div");
+  taskMenuWrapper.className = "task-menu-wrapper";
+
   const moreBtn = document.createElement("button");
   moreBtn.className = "more-btn";
   moreBtn.ariaLabel = "More";
   moreBtn.innerHTML = "<i class='fa-solid fa-ellipsis'></i>";
 
-  taskTop.append(category, moreBtn);
+  taskMenuWrapper.append(moreBtn);
+  taskTop.append(category, taskMenuWrapper);
 
   // title & description
   const title = document.createElement("h3");
