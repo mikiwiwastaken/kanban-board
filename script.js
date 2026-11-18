@@ -8,9 +8,9 @@ import {
 } from "./ui.js";
 
 const board = new Board();
-const todo = board.addColumn("todo", "To Do");
-const doing = board.addColumn("doing", "Doing");
-const done = board.addColumn("done", "Done");
+board.addColumn("todo", "To Do");
+board.addColumn("doing", "Doing");
+board.addColumn("done", "Done");
 
 document.body.addEventListener("click", (event) => {
   if (event.target.closest(".modal-overlay")) {
@@ -29,6 +29,7 @@ document.body.addEventListener("click", (event) => {
   }
 
   const wrapper = event.target.closest(".task-menu-wrapper");
+
   if (event.target.closest(".more-btn")) {
     if (wrapper.querySelector(".task-menu")) {
       closeTaskMenu();
@@ -38,7 +39,16 @@ document.body.addEventListener("click", (event) => {
     }
   }
 
-  if (!event.target.closest(".task-menu-wrapper")) {
+  if (wrapper && event.target.closest(".edit-item")) {
+    const columnId = event.target.closest(".column").dataset.columnId;
+    const cardId = event.target.closest(".task-card").dataset.cardId;
+
+    const card = board.getCard(columnId, cardId);
+    closeTaskMenu();
+    renderModal("Edit task", card, columnId);
+  }
+
+  if (!wrapper) {
     closeTaskMenu();
   }
 });
@@ -51,10 +61,23 @@ document.body.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("submit", (event) => {
-  if (event.target.matches(".modal-form")) {
-    event.preventDefault();
+  if (!event.target.matches(".modal-form")) return;
+  event.preventDefault();
 
-    const data = Object.fromEntries(new FormData(event.target));
+  const form = event.target;
+  const data = Object.fromEntries(new FormData(form));
+  const { cardId, columnId } = form.dataset;
+
+  // cardId, columnId: data attributes of the card being edited
+  // data: new data from the form
+
+  if (cardId) {
+    // Edit mode: mutate the existing card so its id stays the same
+    board.getCard(columnId, cardId).update(data);
+    // moveCard already returns early when from and to are the same column
+    board.moveCard(cardId, columnId, data.status);
+  } else {
+    // Add mode
     const card = new Card(
       data.title,
       data.description,
@@ -62,18 +85,11 @@ document.addEventListener("submit", (event) => {
       data.priority,
       data.dueDate,
     );
-
-    if (data.status === "todo") {
-      todo.addCard(card);
-    } else if (data.status === "doing") {
-      doing.addCard(card);
-    } else {
-      done.addCard(card);
-    }
-
-    render(board, document.querySelector(".board-columns"));
-    closeModal();
+    board.columns.get(data.status).addCard(card);
   }
+
+  render(board, document.querySelector(".board-columns"));
+  closeModal();
 });
 
 function closeModal() {
