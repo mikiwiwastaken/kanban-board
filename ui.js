@@ -301,12 +301,12 @@ export function renderTaskMenu(container) {
   const editBtn = document.createElement("button");
   editBtn.className = "menu-item edit-item";
   editBtn.innerHTML =
-    "<i class='fa-regular fa-pen-to-square'></i><span>Edit</span";
+    "<i class='fa-regular fa-pen-to-square'></i><span>Edit</span>";
 
   const removeBtn = document.createElement("button");
   removeBtn.className = "menu-item remove-item";
   removeBtn.innerHTML =
-    "<i class='fa-regular fa-trash-can'></i><span>Remove</span";
+    "<i class='fa-regular fa-trash-can'></i><span>Remove</span>";
 
   taskMenu.append(editBtn, removeBtn);
   container.append(taskMenu);
