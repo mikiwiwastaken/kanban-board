@@ -1,15 +1,16 @@
 import { Card, Board } from "./models.js";
-import { render, renderModal, removeModal } from "./ui.js";
+import {
+  render,
+  renderModal,
+  removeModal,
+  renderTaskMenu,
+  removeTaskMenu,
+} from "./ui.js";
 
 const board = new Board();
 const todo = board.addColumn("todo", "To Do");
 const doing = board.addColumn("doing", "Doing");
 const done = board.addColumn("done", "Done");
-
-document.querySelector(".add-task-btn").addEventListener("click", () => {
-  renderModal("Add task");
-  disableScroll();
-});
 
 document.body.addEventListener("click", (event) => {
   if (event.target.closest(".modal-overlay")) {
@@ -21,11 +22,31 @@ document.body.addEventListener("click", (event) => {
       closeModal();
     }
   }
+
+  if (event.target.closest(".add-task-btn")) {
+    renderModal("Add task");
+    disableScroll();
+  }
+
+  if (event.target.closest(".more-btn")) {
+    const wrapper = event.target.closest(".task-menu-wrapper");
+    if (wrapper.querySelector(".task-menu")) {
+      closeTaskMenu();
+    } else {
+      renderTaskMenu(wrapper);
+      disableScroll();
+    }
+  }
+
+  if (!event.target.closest(".task-menu-wrapper")) {
+    closeTaskMenu();
+  }
 });
 
 document.body.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeModal();
+    closeTaskMenu();
   }
 });
 
@@ -57,6 +78,11 @@ document.addEventListener("submit", (event) => {
 
 function closeModal() {
   removeModal();
+  enableScroll();
+}
+
+function closeTaskMenu() {
+  removeTaskMenu();
   enableScroll();
 }
 

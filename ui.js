@@ -286,3 +286,27 @@ export function renderModal(heading, card = {}, columnId = "todo") {
 export function removeModal() {
   document.querySelector(".modal-overlay")?.remove();
 }
+
+export function renderTaskMenu(container) {
+  document.querySelector(".task-menu")?.remove();
+
+  const taskMenu = document.createElement("div");
+  taskMenu.className = "task-menu";
+
+  const editBtn = document.createElement("button");
+  editBtn.className = "menu-item edit-item";
+  editBtn.innerHTML =
+    "<i class='fa-regular fa-pen-to-square'></i><span>Edit</span";
+
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "menu-item remove-item";
+  removeBtn.innerHTML =
+    "<i class='fa-regular fa-trash-can'></i><span>Remove</span";
+
+  taskMenu.append(editBtn, removeBtn);
+  container.append(taskMenu);
+}
+
+export function removeTaskMenu() {
+  document.querySelector(".task-menu")?.remove();
+}
