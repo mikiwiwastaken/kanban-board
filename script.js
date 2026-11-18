@@ -25,7 +25,7 @@ document.body.addEventListener("click", (event) => {
 
   if (event.target.closest(".add-task-btn")) {
     renderModal("Add task");
-    disableScroll();
+    syncScrollLock();
   }
 
   const wrapper = event.target.closest(".task-menu-wrapper");
@@ -35,7 +35,7 @@ document.body.addEventListener("click", (event) => {
       closeTaskMenu();
     } else {
       renderTaskMenu(wrapper);
-      disableScroll();
+      syncScrollLock();
     }
   }
 
@@ -92,22 +92,19 @@ document.addEventListener("submit", (event) => {
   closeModal();
 });
 
+// Lock scroll only while a modal or a task menu is open
+function syncScrollLock() {
+  const locked = document.querySelector(".modal-overlay, .task-menu") !== null;
+  document.documentElement.classList.toggle("no-scroll", locked);
+  document.body.classList.toggle("no-scroll", locked);
+}
+
 function closeModal() {
   removeModal();
-  enableScroll();
+  syncScrollLock();
 }
 
 function closeTaskMenu() {
   removeTaskMenu();
-  enableScroll();
-}
-
-function disableScroll() {
-  document.documentElement.classList.add("no-scroll");
-  document.body.classList.add("no-scroll");
-}
-
-function enableScroll() {
-  document.documentElement.classList.remove("no-scroll");
-  document.body.classList.remove("no-scroll");
+  syncScrollLock();
 }
