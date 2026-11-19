@@ -690,6 +690,98 @@ html.no-scroll {
   overflow: hidden;
 }
 
+/* confirmation modal */
+.confirm-modal {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+  animation: modal-enter 0.2s ease;
+}
+
+/* confirmation header */
+.confirm-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.confirm-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.confirm-modal-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.confirm-message {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* confirmation footer */
+.confirm-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.confirm-btn {
+  padding: 9px 15px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.confirm-btn-cancel {
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.confirm-btn-cancel:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.confirm-btn-delete {
+  color: #fff;
+  background: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+.confirm-btn-delete:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
 /* responsive */
 @media (max-width: 900px) {
   .app {

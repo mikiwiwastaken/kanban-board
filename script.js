@@ -1,7 +1,8 @@
 import { Card, Board } from "./models.js";
 import {
   render,
-  renderModal,
+  renderFormModal,
+  renderConfirmationModal,
   removeModal,
   renderTaskMenu,
   removeTaskMenu,
@@ -13,18 +14,29 @@ board.addColumn("doing", "Doing");
 board.addColumn("done", "Done");
 
 document.body.addEventListener("click", (event) => {
+  const confirmationModal = event.target.closest(".confirm-modal");
+
   if (event.target.closest(".modal-overlay")) {
     if (
-      !event.target.closest(".modal") ||
+      (!event.target.closest(".modal") && !confirmationModal) ||
       event.target.closest(".modal-close") ||
-      event.target.closest(".modal-btn-cancel")
+      event.target.closest(".modal-btn-cancel") ||
+      event.target.closest(".confirm-btn-cancel")
     ) {
       closeModal();
+    }
+
+    if (confirmationModal && event.target.closest(".confirm-btn-delete")) {
+      closeModal();
+      board.columns
+        .get(confirmationModal.dataset.columnId)
+        .removeCard(confirmationModal.dataset.cardId);
+      render(board, document.querySelector(".board-columns"));
     }
   }
 
   if (event.target.closest(".add-task-btn")) {
-    renderModal("Add task");
+    renderFormModal("Add task");
     syncScrollLock();
   }
 
@@ -39,13 +51,23 @@ document.body.addEventListener("click", (event) => {
     }
   }
 
-  if (wrapper && event.target.closest(".edit-item")) {
-    const columnId = event.target.closest(".column").dataset.columnId;
-    const cardId = event.target.closest(".task-card").dataset.cardId;
+  if (wrapper) {
+    if (event.target.closest(".edit-item")) {
+      const columnId = event.target.closest(".column").dataset.columnId;
+      const cardId = event.target.closest(".task-card").dataset.cardId;
 
-    const card = board.getCard(columnId, cardId);
-    closeTaskMenu();
-    renderModal("Edit task", card, columnId);
+      const card = board.getCard(columnId, cardId);
+      closeTaskMenu();
+      renderFormModal("Edit task", card, columnId);
+    }
+
+    if (event.target.closest(".remove-item")) {
+      const columnId = event.target.closest(".column").dataset.columnId;
+      const cardId = event.target.closest(".task-card").dataset.cardId;
+
+      closeTaskMenu();
+      renderConfirmationModal(columnId, cardId);
+    }
   }
 
   if (!wrapper) {

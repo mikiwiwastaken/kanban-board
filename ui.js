@@ -115,7 +115,7 @@ export function render(board, container) {
 }
 
 // Render the task editor modal.
-export function renderModal(heading, card = {}, columnId = "todo") {
+export function renderFormModal(heading, card = {}, columnId = "todo") {
   document.querySelector(".modal-overlay")?.remove();
 
   const modalOverlay = document.createElement("div");
@@ -282,6 +282,58 @@ export function renderModal(heading, card = {}, columnId = "todo") {
   modalFooter.append(cancelBtn, saveBtn);
   modalForm.append(title, description, row1, row2, modalFooter);
   modal.append(modalHeader, modalForm);
+  modalOverlay.append(modal);
+
+  document.body.append(modalOverlay);
+}
+
+export function renderConfirmationModal(columnId, cardId) {
+  document.querySelector(".modal-overlay")?.remove();
+
+  const modalOverlay = document.createElement("div");
+  modalOverlay.className = "modal-overlay";
+
+  const modal = document.createElement("div");
+  modal.className = "confirm-modal";
+
+  if (cardId) {
+    modal.dataset.cardId = cardId;
+    modal.dataset.columnId = columnId;
+  }
+
+  // header
+  const header = document.createElement("div");
+  header.className = "confirm-modal-header";
+
+  const icon = document.createElement("div");
+  icon.className = "confirm-icon";
+  icon.innerHTML = "<i class='fa-regular fa-trash-can'></i>";
+
+  const heading = document.createElement("h2");
+  heading.textContent = "Delete task?";
+
+  header.append(icon, heading);
+
+  // confirm message
+  const confirmMessage = document.createElement("p");
+  confirmMessage.className = "confirm-message";
+  confirmMessage.textContent =
+    "Are you sure you want to delete this task? This action cannot be undone.";
+
+  // footer
+  const footer = document.createElement("div");
+  footer.className = "confirm-modal-footer";
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.className = "confirm-btn confirm-btn-cancel";
+  cancelBtn.textContent = "Cancel";
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "confirm-btn confirm-btn-delete";
+  deleteBtn.textContent = "Delete";
+
+  footer.append(cancelBtn, deleteBtn);
+  modal.append(header, confirmMessage, footer);
   modalOverlay.append(modal);
 
   document.body.append(modalOverlay);
